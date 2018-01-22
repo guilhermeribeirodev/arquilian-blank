@@ -1,0 +1,29 @@
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <container qualifier="wildfly10" default="true">
+        <configuration>
+            <property name="jbossHome">/Users/guilhermeribeiro/servers/wildfly-10.1.0.Final</property>
+
+            <!--
+                Comment the property below whether you need to run the tests from either Maven or IDE.
+                Leave it uncommented if you're using IDE debugger but be aware of the ports matching IDE configuration.
+
+                When the server is running on debug mode you can see this line on the log:
+                "Listening for transport dt_socket at address: 8787"
+
+                When there is a problem related to this it should be shown:
+                "ERROR!
+                 org.jboss.arquillian.container.spi.client.container.LifecycleException: Could not start container"
+            -->
+
+            <property name="javaVmArguments">-Xmx512m -XX:MaxPermSize=128m
+                     -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y
+            </property>
+        </configuration>
+    </container>
+
+
+
+</arquillian>
